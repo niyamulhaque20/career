@@ -1,31 +1,29 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
-// Read Firebase config from Vite environment variables (VITE_ prefix)
-const V = (import.meta.env as any) || {};
 const firebaseConfig = {
-  apiKey: V.VITE_FIREBASE_API_KEY,
-  authDomain: V.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: V.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: V.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: V.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: V.VITE_FIREBASE_APP_ID,
-  measurementId: V.VITE_FIREBASE_MEASUREMENT_ID
+apiKey: "YOUR_API_KEY",
+authDomain: "careeros-3d334.firebaseapp.com",
+projectId: "careeros-3d334",
+storageBucket: "careeros-3d334.firebasestorage.app",
+messagingSenderId: "110278323056",
+appId: "1:110278323056:web:f726fbd346ace2b06e7db5",
+measurementId: "G-XPMVTTSN5V"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
 let analytics: ReturnType<typeof getAnalytics> | null = null;
+
 try {
-  // analytics may not be available in some environments
-  analytics = getAnalytics(app);
-} catch (e) {
-  analytics = null;
+analytics = getAnalytics(app);
+} catch {
+analytics = null;
 }
+
 const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
